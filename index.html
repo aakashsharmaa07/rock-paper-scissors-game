@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rock Paper Scissors Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+  <canvas id="antigravity-canvas"></canvas>
+
+
+  <div class="bg-decorations" aria-hidden="true">
+    <span class="float-item pos-1 anim-1">✊</span>
+    <span class="float-item pos-2 anim-2">✋</span>
+    <span class="float-item pos-3 anim-3">✂️</span>
+    <span class="float-item pos-4 anim-4">✊</span>
+    <span class="float-item pos-5 anim-5">✋</span>
+    <span class="float-item pos-6 anim-6">✂️</span>
+  </div>
+
+
+  <main class="game-card">
+    <header class="game-header">
+      <h1>Rock Paper Scissors</h1>
+      <p class="subtitle">Classic Hand Game</p>
+    </header>
+
+
+    <section class="score-board">
+      <div class="score-item">
+        <span class="label">PLAYER</span>
+        <span class="value" id="player-score">0</span>
+      </div>
+      <div class="score-item">
+        <span class="label">COMPUTER</span>
+        <span class="value" id="computer-score">0</span>
+      </div>
+    </section>
+
+
+    <section class="arena">
+      <div class="fighter">
+        <div class="choice-bubble" id="player-display">✊</div>
+        <span class="fighter-name">You</span>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="fighter">
+        <div class="choice-bubble" id="computer-display">✂️</div>
+        <span class="fighter-name">Computer</span>
+      </div>
+    </section>
+
+
+    <div class="status-msg" id="result">Make your move</div>
+
+
+    <section class="controls">
+      <button class="choice-btn" aria-label="Rock" id="Rock">
+        <span class="emoji">✊</span>
+        <span class="btn-text">Rock</span>
+      </button>
+      <button class="choice-btn" aria-label="Paper" id="Paper">
+        <span class="emoji">✋</span>
+        <span class="btn-text">Paper</span>
+      </button>
+      <button class="choice-btn" aria-label="Scissors" id="Scissors">
+        <span class="emoji">✂️</span>
+        <span class="btn-text">Scissors</span>
+      </button>
+    </section>
+
+
+    <footer class="footer-actions">
+      <button class="reset-btn">Reset Scores</button>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
