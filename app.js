@@ -70,30 +70,10 @@ const playGame = (userChoice) => {
     let userWin = true;
     if (userChoice === "Rock"){
       userWin = comChoice === "Paper" ? false : true;
-      userLogo.innerText = "✊";
-      if (userWin){
-        comLogo.innerText = "✂️";
-      } else{
-        comLogo.innerText = "✋";
-      }
-
     } else if (userChoice === "Paper"){
-      userWin = comChoice === "Scissors" ? false : true;
-      userLogo.innerText = "✋";
-      if (userWin){
-        comLogo.innerText = "✊";
-      } else{
-        comLogo.innerText = "✂️";
-      }
-
+      userWin = comChoice === "Scissors" ? false : true;      
     } else {
       userWin = comChoice === "Rock" ? false : true;
-      userLogo.innerText = "✂️";
-      if (userWin){
-        comLogo.innerText = "✋";
-      } else{
-        comLogo.innerText = "✊";
-      }
     }
     showWin(userWin,userChoice,comChoice);
   }
