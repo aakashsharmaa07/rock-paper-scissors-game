@@ -1,6 +1,12 @@
 let userScore = 0;
 let compScore = 0;
 
+const emojis = {
+  "Rock": "✊",
+  "Paper": "✋",
+  "Scissors": "✂️"
+};
+
 const choices = document.querySelectorAll(".choice-btn");
 const msg = document.querySelector("#result");
 
@@ -22,7 +28,10 @@ const getcomChoice = () => {
 
 
 //Show Winner
-const showWin = (userWin) => {
+const showWin = (userWin,userChoice,comChoice) => {
+  userLogo.innerText = emojis[userChoice];
+  comLogo.innerText = emojis[comChoice];
+  
   if(userWin){
     userScore++;
     user.innerText = userScore;
@@ -38,17 +47,9 @@ const showWin = (userWin) => {
 
 //Draw Game 
 const drawGame = (userChoice,comChoice) => {
+  userLogo.innerText = emojis[userChoice];
+  comLogo.innerText = emojis[comChoice];
 
-  if(userChoice === "Rock" && comChoice === "Rock"){
-    userLogo.innerText = "✊";
-    comLogo.innerText = "✊";
-  } else if (userChoice === "Paper" && comChoice === "Paper"){
-    userLogo.innerText = "✋";
-    comLogo.innerText = "✋";
-  } else {
-    userLogo.innerText = "✂️";
-    comLogo.innerText = "✂️";
-  }
 
   msg.innerText ="Game was Draw";
   msg.style.backgroundColor = "grey";
@@ -94,7 +95,7 @@ const playGame = (userChoice) => {
         comLogo.innerText = "✊";
       }
     }
-    showWin(userWin);
+    showWin(userWin,userChoice,comChoice);
   }
 
 
