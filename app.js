@@ -1,90 +1,127 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let userScore = 0;
+let compScore = 0;
+
+const choices = document.querySelectorAll(".choice-btn");
+const msg = document.querySelector("#result");
+
+const user = document.querySelector("#player-score");
+const comp = document.querySelector("#computer-score");
+
+const userLogo = document.querySelector("#player-display");
+const comLogo = document.querySelector("#computer-display");
+
+const reset = document.querySelector("#btn");
+
+
+//Computer Choice
+const getcomChoice = () => {
+    const options = ["Rock", "Paper", "Scissors"];
+    const ranIdx = Math.floor(Math.random() * 3);
+    return options[ranIdx];
+};
+
+
+//Show Winner
+const showWin = (userWin) => {
+  if(userWin){
+    userScore++;
+    user.innerText = userScore;
+    msg.innerText = "You Won";
+    msg.style.backgroundColor = "green";
+  } else{
+    compScore++;
+    comp.innerText = compScore;
+    msg.innerText = "You Lose";
+    msg.style.backgroundColor = "red";
+  }
+};
+
+//Draw Game 
+const drawGame = (userChoice,comChoice) => {
+
+  if(userChoice === "Rock" && comChoice === "Rock"){
+    userLogo.innerText = "✊";
+    comLogo.innerText = "✊";
+  } else if (userChoice === "Paper" && comChoice === "Paper"){
+    userLogo.innerText = "✋";
+    comLogo.innerText = "✋";
+  } else {
+    userLogo.innerText = "✂️";
+    comLogo.innerText = "✂️";
+  }
+
+  msg.innerText ="Game was Draw";
+  msg.style.backgroundColor = "grey";
+};
+
+
+
+//Play Game
+const playGame = (userChoice) => {
+  const comChoice = getcomChoice();
+  console.log("Com Choice", comChoice);
+  console.log("User Choice", userChoice);
+  
+  if(userChoice === comChoice){
+
+    drawGame(userChoice, comChoice);
+  } else {
+    let userWin = true;
+    if (userChoice === "Rock"){
+      userWin = comChoice === "Paper" ? false : true;
+      userLogo.innerText = "✊";
+      if (userWin){
+        comLogo.innerText = "✂️";
+      } else{
+        comLogo.innerText = "✋";
+      }
+
+    } else if (userChoice === "Paper"){
+      userWin = comChoice === "Scissors" ? false : true;
+      userLogo.innerText = "✋";
+      if (userWin){
+        comLogo.innerText = "✊";
+      } else{
+        comLogo.innerText = "✂️";
+      }
+
+    } else {
+      userWin = comChoice === "Rock" ? false : true;
+      userLogo.innerText = "✂️";
+      if (userWin){
+        comLogo.innerText = "✋";
+      } else{
+        comLogo.innerText = "✊";
+      }
+    }
+    showWin(userWin);
+  }
+
+
+};
+
+
+//User Choice
+choices.forEach((choice) => {
+    choice.addEventListener("click", () => {
+        const userChoice = choice.getAttribute("id");   
+        playGame(userChoice)
+    });   
+});
+
+
+//Reset Button
+
+reset.addEventListener("click", () => {
+  userScore = 0;
+  compScore = 0;
+  user.innerText = "0";
+  comp.innerText = "0";
+  userLogo.innerText = "❓";
+  comLogo.innerText = "❓";
+  msg.innerText = "Make your move";
+  msg.style.backgroundColor = ""; 
+});
 
 
 

@@ -27,7 +27,12 @@ body {
   overflow: hidden;
 }
 
-
+/*#result {
+  color: #ffffff;
+  background: var(--text-main);
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}*/
 #antigravity-canvas {
   position: fixed;
   top: 0;
@@ -196,10 +201,16 @@ body {
 
 
 .status-msg {
+  display: block;
+  width: fit-content;
+  padding: 0px 12px;
+  margin: auto;
   text-align: center;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text-main);
+  color: white;
+  background: var(--text-main);
+  border-radius: 20px;
   margin-bottom: 24px;
   height: 24px;
 }
